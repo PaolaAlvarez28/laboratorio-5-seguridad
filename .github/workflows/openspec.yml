@@ -1,0 +1,32 @@
+# Valida las especificaciones de seguridad de OpenSpec en cada push y pull request
+name: OpenSpec
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validar-specs:
+    name: Validar especificaciones de seguridad
+    runs-on: ubuntu-latest
+    env:
+      OPENSPEC_TELEMETRY: 0
+    steps:
+      - name: Descargar el codigo
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Instalar OpenSpec
+        run: npm install -g @fission-ai/openspec@1.14.3
+
+      - name: Mostrar especificaciones
+        run: openspec list --specs
+
+      - name: Validar especificaciones y cambios
+        run: openspec validate --all --strict --no-interactive
