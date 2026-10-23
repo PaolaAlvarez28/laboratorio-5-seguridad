@@ -1,0 +1,45 @@
+schema: spec-driven
+
+context: |
+  Language: es
+  All artifacts must be written in es.
+  Keep OpenSpec structural headings and SHALL/MUST keywords in English.
+
+  Proyecto: UNA Chat (Laboratorio 5 de Seguridad Informatica).
+  Stack: Node.js + Express + Socket.IO 4 en el backend (server.js),
+  HTML + jQuery + cliente Socket.IO en el frontend (index.html).
+  Los mensajes viajan por el evento Socket.IO "Evento-Mensaje-Server";
+  la unica ruta HTTP es GET / que entrega index.html.
+  Toda la validacion vive en libs/unalib.js (una-lib), metodo validarMensaje.
+
+  Convenciones de seguridad:
+  - El backend nunca genera HTML; devuelve JSON con { nombre, mensaje, color, tipo, videoId? }.
+  - El frontend construye los elementos con createElement/textContent, nunca innerHTML.
+  - Solo se permiten URLs http/https de imagenes, videos o YouTube enviadas solas.
+  - Todo texto se sanea (scripts, etiquetas, javascript:, on*=) antes de reenviarse.
+
+  Pruebas:
+  - Unitarias: mocha, test/test.js, comando "npm test".
+  - Integracion: Jest + Supertest + socket.io-client, tests/integration, comando
+    "npx jest tests/integration --runInBand --env=node".
+  - End-to-end: Playwright (Chromium), tests/e2e, comando
+    "npx playwright test --project=chromium" con "npm start" corriendo.
+
+# Per-artifact rules (optional)
+rules:
+  proposal:
+    - Incluir una seccion de impacto en seguridad (XSS, inyeccion, validacion de URLs)
+  tasks:
+    - Toda tarea que cambie la validacion debe incluir pruebas unitarias, de integracion o e2e
+
+# Per-operation guidance (optional)
+# Add advisory guidance for how apply and archive work should be conducted.
+# This is separate from artifact rules above.
+# Example:
+#   operations:
+#     apply:
+#       guidance:
+#         - Keep test summaries concise
+#     archive:
+#       guidance:
+#         - Summarize the archive outcome before finishing
