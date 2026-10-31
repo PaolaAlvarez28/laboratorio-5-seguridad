@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@sentry/node": "^11.10.0",
     "express": "*",
     "mocha": "^10.2.0",
     "socket.io": "*"
