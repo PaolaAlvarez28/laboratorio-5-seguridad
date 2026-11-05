@@ -1,0 +1,14 @@
+# credenciales: se pasan al contenedor con env_file, nunca dentro de la imagen
+.env
+node_modules
+.git
+.github
+.claude
+openspec
+test
+tests
+test-results
+playwright-report
+playwright.config.js
+artillery
+*.md

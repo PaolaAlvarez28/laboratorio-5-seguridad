@@ -1,0 +1,31 @@
+# Prueba de carga local de UNA Chat (Lab 8, parte 3.2)
+# Destino: el contenedor Docker en localhost:3000. No usar la URL de Render/Vercel.
+# 5 usuarios virtuales nuevos por segundo durante 60 s, cada uno hace UNA sola
+# solicitud (sin bucles ni pausas): 5 rps y 300 solicitudes en total.
+# El endpoint no requiere autenticacion; este archivo no contiene credenciales.
+config:
+  target: "http://localhost:3000"
+  phases:
+    - name: "carga 5 rps x 60 s"
+      duration: 60
+      arrivalRate: 5
+  http:
+    timeout: 10
+  # verifica que cada respuesta sea 200 (solo muestra las que fallen)
+  plugins:
+    expect:
+      outputFormat: prettyError
+
+scenarios:
+  - name: "Enviar un mensaje al chat"
+    flow:
+      - post:
+          url: "/api/mensajes"
+          headers:
+            Content-Type: "application/json"
+          json:
+            nombre: "Artillery"
+            mensaje: "Mensaje de carga {{ $randomNumber(1, 100000) }}"
+            color: "#0055aa"
+          expect:
+            - statusCode: 200

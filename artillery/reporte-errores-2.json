@@ -1,0 +1,663 @@
+{
+  "aggregate": {
+    "period": 1793840070000,
+    "counters": {
+      "vusers.created_by_name.Llamar al endpoint que falla": 60,
+      "vusers.created": 60,
+      "http.requests": 60,
+      "http.codes.500": 60,
+      "http.responses": 60,
+      "http.downloaded_bytes": 2280,
+      "plugins.metrics-by-endpoint./api/fallo.codes.500": 60,
+      "vusers.failed": 0,
+      "vusers.completed": 60
+    },
+    "rates": {
+      "http.request_rate": 2
+    },
+    "firstCounterAt": 1793840041428,
+    "firstHistogramAt": 1793840041464,
+    "lastCounterAt": 1793840070497,
+    "lastHistogramAt": 1793840070497,
+    "firstMetricAt": 1793840041428,
+    "lastMetricAt": 1793840070497,
+    "summaries": {
+      "http.response_time": {
+        "min": 4,
+        "max": 15,
+        "count": 60,
+        "mean": 5.6,
+        "p50": 5,
+        "median": 5,
+        "p75": 6,
+        "p90": 7.9,
+        "p95": 10.1,
+        "p99": 12.1,
+        "p999": 12.1
+      },
+      "http.response_time.5xx": {
+        "min": 4,
+        "max": 15,
+        "count": 60,
+        "mean": 5.6,
+        "p50": 5,
+        "median": 5,
+        "p75": 6,
+        "p90": 7.9,
+        "p95": 10.1,
+        "p99": 12.1,
+        "p999": 12.1
+      },
+      "plugins.metrics-by-endpoint.response_time./api/fallo": {
+        "min": 4,
+        "max": 15,
+        "count": 60,
+        "mean": 5.6,
+        "p50": 5,
+        "median": 5,
+        "p75": 6,
+        "p90": 7.9,
+        "p95": 10.1,
+        "p99": 12.1,
+        "p999": 12.1
+      },
+      "vusers.session_length": {
+        "min": 6.2,
+        "max": 39.5,
+        "count": 60,
+        "mean": 10,
+        "p50": 8.4,
+        "median": 8.4,
+        "p75": 10.9,
+        "p90": 12.8,
+        "p95": 17.3,
+        "p99": 24.8,
+        "p999": 24.8
+      }
+    },
+    "histograms": {
+      "http.response_time": {
+        "min": 4,
+        "max": 15,
+        "count": 60,
+        "mean": 5.6,
+        "p50": 5,
+        "median": 5,
+        "p75": 6,
+        "p90": 7.9,
+        "p95": 10.1,
+        "p99": 12.1,
+        "p999": 12.1
+      },
+      "http.response_time.5xx": {
+        "min": 4,
+        "max": 15,
+        "count": 60,
+        "mean": 5.6,
+        "p50": 5,
+        "median": 5,
+        "p75": 6,
+        "p90": 7.9,
+        "p95": 10.1,
+        "p99": 12.1,
+        "p999": 12.1
+      },
+      "plugins.metrics-by-endpoint.response_time./api/fallo": {
+        "min": 4,
+        "max": 15,
+        "count": 60,
+        "mean": 5.6,
+        "p50": 5,
+        "median": 5,
+        "p75": 6,
+        "p90": 7.9,
+        "p95": 10.1,
+        "p99": 12.1,
+        "p999": 12.1
+      },
+      "vusers.session_length": {
+        "min": 6.2,
+        "max": 39.5,
+        "count": 60,
+        "mean": 10,
+        "p50": 8.4,
+        "median": 8.4,
+        "p75": 10.9,
+        "p90": 12.8,
+        "p95": 17.3,
+        "p99": 24.8,
+        "p999": 24.8
+      }
+    }
+  },
+  "intermediate": [
+    {
+      "period": "1793840040000",
+      "counters": {
+        "vusers.created_by_name.Llamar al endpoint que falla": 18,
+        "vusers.created": 18,
+        "http.requests": 18,
+        "http.codes.500": 18,
+        "http.responses": 18,
+        "http.downloaded_bytes": 684,
+        "plugins.metrics-by-endpoint./api/fallo.codes.500": 18,
+        "vusers.failed": 0,
+        "vusers.completed": 18
+      },
+      "rates": {
+        "http.request_rate": 2
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1793840041428,
+      "firstHistogramAt": 1793840041464,
+      "lastCounterAt": 1793840049496,
+      "lastHistogramAt": 1793840049496,
+      "firstMetricAt": 1793840041428,
+      "lastMetricAt": 1793840049496,
+      "summaries": {
+        "http.response_time": {
+          "min": 4,
+          "max": 12,
+          "count": 18,
+          "mean": 5.8,
+          "p50": 5,
+          "median": 5,
+          "p75": 6,
+          "p90": 8.9,
+          "p95": 10.9,
+          "p99": 10.9,
+          "p999": 10.9
+        },
+        "http.response_time.5xx": {
+          "min": 4,
+          "max": 12,
+          "count": 18,
+          "mean": 5.8,
+          "p50": 5,
+          "median": 5,
+          "p75": 6,
+          "p90": 8.9,
+          "p95": 10.9,
+          "p99": 10.9,
+          "p999": 10.9
+        },
+        "plugins.metrics-by-endpoint.response_time./api/fallo": {
+          "min": 4,
+          "max": 12,
+          "count": 18,
+          "mean": 5.8,
+          "p50": 5,
+          "median": 5,
+          "p75": 6,
+          "p90": 8.9,
+          "p95": 10.9,
+          "p99": 10.9,
+          "p999": 10.9
+        },
+        "vusers.session_length": {
+          "min": 6.6,
+          "max": 39.5,
+          "count": 18,
+          "mean": 12.5,
+          "p50": 9.3,
+          "median": 9.3,
+          "p75": 10.9,
+          "p90": 17.3,
+          "p95": 24.8,
+          "p99": 24.8,
+          "p999": 24.8
+        }
+      },
+      "histograms": {
+        "http.response_time": {
+          "min": 4,
+          "max": 12,
+          "count": 18,
+          "mean": 5.8,
+          "p50": 5,
+          "median": 5,
+          "p75": 6,
+          "p90": 8.9,
+          "p95": 10.9,
+          "p99": 10.9,
+          "p999": 10.9
+        },
+        "http.response_time.5xx": {
+          "min": 4,
+          "max": 12,
+          "count": 18,
+          "mean": 5.8,
+          "p50": 5,
+          "median": 5,
+          "p75": 6,
+          "p90": 8.9,
+          "p95": 10.9,
+          "p99": 10.9,
+          "p999": 10.9
+        },
+        "plugins.metrics-by-endpoint.response_time./api/fallo": {
+          "min": 4,
+          "max": 12,
+          "count": 18,
+          "mean": 5.8,
+          "p50": 5,
+          "median": 5,
+          "p75": 6,
+          "p90": 8.9,
+          "p95": 10.9,
+          "p99": 10.9,
+          "p999": 10.9
+        },
+        "vusers.session_length": {
+          "min": 6.6,
+          "max": 39.5,
+          "count": 18,
+          "mean": 12.5,
+          "p50": 9.3,
+          "median": 9.3,
+          "p75": 10.9,
+          "p90": 17.3,
+          "p95": 24.8,
+          "p99": 24.8,
+          "p999": 24.8
+        }
+      }
+    },
+    {
+      "period": "1793840050000",
+      "counters": {
+        "vusers.created_by_name.Llamar al endpoint que falla": 20,
+        "vusers.created": 20,
+        "http.requests": 20,
+        "http.codes.500": 20,
+        "http.responses": 20,
+        "http.downloaded_bytes": 760,
+        "plugins.metrics-by-endpoint./api/fallo.codes.500": 20,
+        "vusers.failed": 0,
+        "vusers.completed": 20
+      },
+      "rates": {
+        "http.request_rate": 2
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1793840050424,
+      "firstHistogramAt": 1793840050432,
+      "lastCounterAt": 1793840059494,
+      "lastHistogramAt": 1793840059494,
+      "firstMetricAt": 1793840050424,
+      "lastMetricAt": 1793840059494,
+      "summaries": {
+        "http.response_time": {
+          "min": 4,
+          "max": 15,
+          "count": 20,
+          "mean": 5.7,
+          "p50": 5,
+          "median": 5,
+          "p75": 6,
+          "p90": 7.9,
+          "p95": 8.9,
+          "p99": 8.9,
+          "p999": 8.9
+        },
+        "http.response_time.5xx": {
+          "min": 4,
+          "max": 15,
+          "count": 20,
+          "mean": 5.7,
+          "p50": 5,
+          "median": 5,
+          "p75": 6,
+          "p90": 7.9,
+          "p95": 8.9,
+          "p99": 8.9,
+          "p999": 8.9
+        },
+        "plugins.metrics-by-endpoint.response_time./api/fallo": {
+          "min": 4,
+          "max": 15,
+          "count": 20,
+          "mean": 5.7,
+          "p50": 5,
+          "median": 5,
+          "p75": 6,
+          "p90": 7.9,
+          "p95": 8.9,
+          "p99": 8.9,
+          "p999": 8.9
+        },
+        "vusers.session_length": {
+          "min": 6.3,
+          "max": 19.3,
+          "count": 20,
+          "mean": 9.2,
+          "p50": 8.1,
+          "median": 8.1,
+          "p75": 9.3,
+          "p90": 12.8,
+          "p95": 12.8,
+          "p99": 12.8,
+          "p999": 12.8
+        }
+      },
+      "histograms": {
+        "http.response_time": {
+          "min": 4,
+          "max": 15,
+          "count": 20,
+          "mean": 5.7,
+          "p50": 5,
+          "median": 5,
+          "p75": 6,
+          "p90": 7.9,
+          "p95": 8.9,
+          "p99": 8.9,
+          "p999": 8.9
+        },
+        "http.response_time.5xx": {
+          "min": 4,
+          "max": 15,
+          "count": 20,
+          "mean": 5.7,
+          "p50": 5,
+          "median": 5,
+          "p75": 6,
+          "p90": 7.9,
+          "p95": 8.9,
+          "p99": 8.9,
+          "p999": 8.9
+        },
+        "plugins.metrics-by-endpoint.response_time./api/fallo": {
+          "min": 4,
+          "max": 15,
+          "count": 20,
+          "mean": 5.7,
+          "p50": 5,
+          "median": 5,
+          "p75": 6,
+          "p90": 7.9,
+          "p95": 8.9,
+          "p99": 8.9,
+          "p999": 8.9
+        },
+        "vusers.session_length": {
+          "min": 6.3,
+          "max": 19.3,
+          "count": 20,
+          "mean": 9.2,
+          "p50": 8.1,
+          "median": 8.1,
+          "p75": 9.3,
+          "p90": 12.8,
+          "p95": 12.8,
+          "p99": 12.8,
+          "p999": 12.8
+        }
+      }
+    },
+    {
+      "period": "1793840060000",
+      "counters": {
+        "vusers.created_by_name.Llamar al endpoint que falla": 20,
+        "vusers.created": 20,
+        "http.requests": 20,
+        "http.codes.500": 20,
+        "http.responses": 20,
+        "http.downloaded_bytes": 760,
+        "plugins.metrics-by-endpoint./api/fallo.codes.500": 20,
+        "vusers.failed": 0,
+        "vusers.completed": 20
+      },
+      "rates": {
+        "http.request_rate": 2
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1793840060424,
+      "firstHistogramAt": 1793840060432,
+      "lastCounterAt": 1793840069497,
+      "lastHistogramAt": 1793840069497,
+      "firstMetricAt": 1793840060424,
+      "lastMetricAt": 1793840069497,
+      "summaries": {
+        "http.response_time": {
+          "min": 4,
+          "max": 10,
+          "count": 20,
+          "mean": 5.4,
+          "p50": 5,
+          "median": 5,
+          "p75": 6,
+          "p90": 7,
+          "p95": 7,
+          "p99": 7,
+          "p999": 7
+        },
+        "http.response_time.5xx": {
+          "min": 4,
+          "max": 10,
+          "count": 20,
+          "mean": 5.4,
+          "p50": 5,
+          "median": 5,
+          "p75": 6,
+          "p90": 7,
+          "p95": 7,
+          "p99": 7,
+          "p999": 7
+        },
+        "plugins.metrics-by-endpoint.response_time./api/fallo": {
+          "min": 4,
+          "max": 10,
+          "count": 20,
+          "mean": 5.4,
+          "p50": 5,
+          "median": 5,
+          "p75": 6,
+          "p90": 7,
+          "p95": 7,
+          "p99": 7,
+          "p999": 7
+        },
+        "vusers.session_length": {
+          "min": 6.2,
+          "max": 12.9,
+          "count": 20,
+          "mean": 8.6,
+          "p50": 7.9,
+          "median": 7.9,
+          "p75": 9.1,
+          "p90": 11.8,
+          "p95": 12.3,
+          "p99": 12.3,
+          "p999": 12.3
+        }
+      },
+      "histograms": {
+        "http.response_time": {
+          "min": 4,
+          "max": 10,
+          "count": 20,
+          "mean": 5.4,
+          "p50": 5,
+          "median": 5,
+          "p75": 6,
+          "p90": 7,
+          "p95": 7,
+          "p99": 7,
+          "p999": 7
+        },
+        "http.response_time.5xx": {
+          "min": 4,
+          "max": 10,
+          "count": 20,
+          "mean": 5.4,
+          "p50": 5,
+          "median": 5,
+          "p75": 6,
+          "p90": 7,
+          "p95": 7,
+          "p99": 7,
+          "p999": 7
+        },
+        "plugins.metrics-by-endpoint.response_time./api/fallo": {
+          "min": 4,
+          "max": 10,
+          "count": 20,
+          "mean": 5.4,
+          "p50": 5,
+          "median": 5,
+          "p75": 6,
+          "p90": 7,
+          "p95": 7,
+          "p99": 7,
+          "p999": 7
+        },
+        "vusers.session_length": {
+          "min": 6.2,
+          "max": 12.9,
+          "count": 20,
+          "mean": 8.6,
+          "p50": 7.9,
+          "median": 7.9,
+          "p75": 9.1,
+          "p90": 11.8,
+          "p95": 12.3,
+          "p99": 12.3,
+          "p999": 12.3
+        }
+      }
+    },
+    {
+      "period": "1793840070000",
+      "counters": {
+        "vusers.created_by_name.Llamar al endpoint que falla": 2,
+        "vusers.created": 2,
+        "http.requests": 2,
+        "http.codes.500": 2,
+        "http.responses": 2,
+        "http.downloaded_bytes": 76,
+        "plugins.metrics-by-endpoint./api/fallo.codes.500": 2,
+        "vusers.failed": 0,
+        "vusers.completed": 2
+      },
+      "rates": {
+        "http.request_rate": 2
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1793840070424,
+      "firstHistogramAt": 1793840070436,
+      "lastCounterAt": 1793840070497,
+      "lastHistogramAt": 1793840070497,
+      "firstMetricAt": 1793840070424,
+      "lastMetricAt": 1793840070497,
+      "summaries": {
+        "http.response_time": {
+          "min": 5,
+          "max": 8,
+          "count": 2,
+          "mean": 6.5,
+          "p50": 5,
+          "median": 5,
+          "p75": 5,
+          "p90": 5,
+          "p95": 5,
+          "p99": 5,
+          "p999": 5
+        },
+        "http.response_time.5xx": {
+          "min": 5,
+          "max": 8,
+          "count": 2,
+          "mean": 6.5,
+          "p50": 5,
+          "median": 5,
+          "p75": 5,
+          "p90": 5,
+          "p95": 5,
+          "p99": 5,
+          "p999": 5
+        },
+        "plugins.metrics-by-endpoint.response_time./api/fallo": {
+          "min": 5,
+          "max": 8,
+          "count": 2,
+          "mean": 6.5,
+          "p50": 5,
+          "median": 5,
+          "p75": 5,
+          "p90": 5,
+          "p95": 5,
+          "p99": 5,
+          "p999": 5
+        },
+        "vusers.session_length": {
+          "min": 9.4,
+          "max": 12.1,
+          "count": 2,
+          "mean": 10.8,
+          "p50": 9.5,
+          "median": 9.5,
+          "p75": 9.5,
+          "p90": 9.5,
+          "p95": 9.5,
+          "p99": 9.5,
+          "p999": 9.5
+        }
+      },
+      "histograms": {
+        "http.response_time": {
+          "min": 5,
+          "max": 8,
+          "count": 2,
+          "mean": 6.5,
+          "p50": 5,
+          "median": 5,
+          "p75": 5,
+          "p90": 5,
+          "p95": 5,
+          "p99": 5,
+          "p999": 5
+        },
+        "http.response_time.5xx": {
+          "min": 5,
+          "max": 8,
+          "count": 2,
+          "mean": 6.5,
+          "p50": 5,
+          "median": 5,
+          "p75": 5,
+          "p90": 5,
+          "p95": 5,
+          "p99": 5,
+          "p999": 5
+        },
+        "plugins.metrics-by-endpoint.response_time./api/fallo": {
+          "min": 5,
+          "max": 8,
+          "count": 2,
+          "mean": 6.5,
+          "p50": 5,
+          "median": 5,
+          "p75": 5,
+          "p90": 5,
+          "p95": 5,
+          "p99": 5,
+          "p999": 5
+        },
+        "vusers.session_length": {
+          "min": 9.4,
+          "max": 12.1,
+          "count": 2,
+          "mean": 10.8,
+          "p50": 9.5,
+          "median": 9.5,
+          "p75": 9.5,
+          "p90": 9.5,
+          "p95": 9.5,
+          "p99": 9.5,
+          "p999": 9.5
+        }
+      }
+    }
+  ]
+}

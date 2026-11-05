@@ -1,0 +1,18 @@
+# Prueba de errores de UNA Chat (Lab 8): golpea el endpoint que falla a proposito.
+# GET /api/fallo responde 500 (requiere CHAT_FALLO_CONTROLADO=true en el .env).
+# Sirve para ver los errores en el dashboard de Artillery, en Grafana y en Sentry,
+# y para disparar la alerta por correo. 2 solicitudes por segundo durante 30 s = 60.
+config:
+  target: "http://localhost:3000"
+  phases:
+    - name: "errores 2 rps x 30 s"
+      duration: 30
+      arrivalRate: 2
+  http:
+    timeout: 10
+
+scenarios:
+  - name: "Llamar al endpoint que falla"
+    flow:
+      - get:
+          url: "/api/fallo"
