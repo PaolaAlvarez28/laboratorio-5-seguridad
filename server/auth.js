@@ -113,8 +113,10 @@ function crearAuth(env) {
       var error = r.json.error || '(sin error)';
       if (error === 'invalid_grant') {
         console.log('[auth] Prueba de arranque: HTTP ' + r.status + ' ' + error + ' (esperado: Auth0 acepto el Client Secret)');
-      } else if (error === 'invalid_client') {
-        console.error('[auth] Prueba de arranque: HTTP ' + r.status + ' invalid_client. Revise que Vault tenga el secreto de esta aplicacion.');
+      } else if (error === 'invalid_client' || r.status === 401) {
+        // segun el tenant, Auth0 rechaza el secreto con invalid_client o con 401 access_denied
+        console.error('[auth] Prueba de arranque: HTTP ' + r.status + ' ' + error + '. Auth0 rechazo el Client Secret: revise que Vault tenga el secreto de esta aplicacion.');
+        return 'invalid_client';
       } else {
         console.warn('[auth] Prueba de arranque: HTTP ' + r.status + ' ' + error);
       }

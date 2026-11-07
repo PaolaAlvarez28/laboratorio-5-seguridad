@@ -4,7 +4,9 @@
 //   - invalid_grant:  Auth0 acepta el secreto y solo rechaza el codigo de prueba (el nuevo)
 //
 // Uso:  node scripts/probar-secreto.js <archivo-con-el-secreto> [etiqueta]
+//       node scripts/probar-secreto.js --vault [etiqueta]   (usa el secreto guardado en Supabase Vault)
 // El archivo debe estar FUERA del repositorio. Solo se imprime la hora, el estado HTTP y el error.
+// Nota: segun el tenant, Auth0 rechaza un secreto viejo con invalid_client o con 401 access_denied.
 
 var fs = require('fs');
 var crypto = require('crypto');
@@ -23,31 +25,37 @@ if (!archivo || !dominio || !clientId) {
   process.exit(1);
 }
 
-var secreto = fs.readFileSync(archivo, 'utf8').trim();
 var verificador = crypto.randomBytes(48).toString('base64url'); // 64 caracteres permitidos
 
 var cuerpo = new URLSearchParams({
   grant_type: 'authorization_code',
   client_id: clientId,
-  client_secret: secreto,
+  client_secret: '',
   code: 'vault-startup-probe',
   redirect_uri: baseUrl + '/auth/callback',
   code_verifier: verificador,
 });
 
-fetch('https://' + dominio + '/oauth/token', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  body: cuerpo,
+var obtenerSecreto = archivo === '--vault'
+  ? require('../server/vault').leerClientSecret(process.env.VAULT_DATABASE_URL)
+  : Promise.resolve(fs.readFileSync(archivo, 'utf8').trim());
+
+obtenerSecreto.then(function (secreto) {
+  cuerpo.set('client_secret', secreto);
+  return fetch('https://' + dominio + '/oauth/token', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: cuerpo,
+  });
 }).then(function (res) {
   return res.json().catch(function () { return {}; }).then(function (json) {
     console.log('Prueba: ' + etiqueta);
     console.log('  Hora:        ' + new Date().toLocaleString('es-CR'));
     console.log('  POST         https://' + dominio + '/oauth/token');
     console.log('  Estado HTTP: ' + res.status);
-    console.log('  error:       ' + (json.error || '(ninguno)'));
+    console.log('  error:       ' + (json.error || '(ninguno)') + (json.error_description ? ' (' + json.error_description + ')' : ''));
   });
 }).catch(function (e) {
-  console.error('No se pudo contactar a Auth0: ' + e.message);
+  console.error('No se pudo hacer la prueba: ' + e.message);
   process.exit(1);
 });
