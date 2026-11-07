@@ -12,6 +12,10 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
 
+// inicio de sesion con Auth0; el Client Secret se lee desde Supabase Vault.
+// En las pruebas automaticas (NODE_ENV=test) queda desactivado y el chat abierto.
+var auth = require('./server/auth').crearAuth(process.env.NODE_ENV === 'test' ? {} : process.env);
+
 // fallo controlado para las pruebas de monitoreo (solo si CHAT_FALLO_CONTROLADO=true)
 var falloActivo = process.env.CHAT_FALLO_CONTROLADO === 'true';
 
@@ -33,13 +37,22 @@ function esComandoFallo(msg){
   }
 }
 
-// root: presentar html
+// rutas de inicio de sesion: /auth/config, /auth/login, /auth/callback, /auth/me, /auth/logout
+app.use('/auth', auth.router);
+
+// root: con Auth0 activo lleva a la sala; sin Auth0 presenta el chat
 app.get('/', function(req, res){
+  if (auth.habilitado) return res.redirect(302, '/sala');
+  res.sendFile(__dirname + '/index.html');
+});
+
+// sala del chat: requiere sesion cuando Auth0 esta activo (sin sesion responde 401)
+app.get('/sala', auth.requiereSesion, function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
 // procesar un mensaje por HTTP (lo usan las pruebas de carga con Artillery)
-app.post('/api/mensajes', express.json({ limit: '10kb' }), function(req, res, next){
+app.post('/api/mensajes', auth.requiereSesion, express.json({ limit: '10kb' }), function(req, res, next){
   if (!req.body || typeof req.body.mensaje !== 'string') {
     telemetria.log('warn', 'Solicitud sin mensaje', { 'chat.origen': 'http' });
     return res.status(400).json({ error: 'El campo "mensaje" es obligatorio' });
@@ -68,11 +81,20 @@ if (process.env.SENTRY_DEBUG_ROUTE === 'true') {
   });
 }
 
+// con Auth0 activo, solo se conectan sockets con sesion valida
+io.use(auth.socketMiddleware);
+
 // escuchar una conexion por socket
 io.on('connection', function(socket){
   // si se escucha "chat message"
   socket.on('Evento-Mensaje-Server', function(msg){
     try {
+      // con sesion, el nombre lo pone el servidor (evita hacerse pasar por otro)
+      if (socket.data.usuario) {
+        var datos = JSON.parse(msg);
+        datos.nombre = socket.data.usuario.name;
+        msg = JSON.stringify(datos);
+      }
       msg = telemetria.procesarMensaje(validador, msg, 'socket');
       // volvemos a emitir el mismo mensaje
       io.emit('Evento-Mensaje-Server', msg);
@@ -94,10 +116,16 @@ app.use(function(err, req, res, next){
 
 // solo se levanta el puerto al ejecutar "npm start";
 // las pruebas de integracion importan el servidor y lo inician ellas mismas
+// antes de escuchar se lee el secreto desde Vault y se prueba contra Auth0
 if (require.main === module) {
-  http.listen(port, function(){
-    console.log('listening on *:' + port);
+  auth.iniciar().then(function(){
+    http.listen(port, function(){
+      console.log('listening on *:' + port);
+    });
+  }).catch(function(err){
+    console.error('[auth] No se pudo iniciar: ' + err.message);
+    process.exit(1);
   });
 }
 
-module.exports = { app: app, http: http, io: io };
+module.exports = { app: app, http: http, io: io, auth: auth };
